@@ -9,6 +9,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Net/UnrealNetwork.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -51,6 +52,14 @@ AGenGameCharacter::AGenGameCharacter()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
+void AGenGameCharacter::SetPlayerState(ECharacterState NewState)
+{
+	if (NewState != CurrentState)
+	{
+		CurrentState = NewState;
+	}
+}
+
 void AGenGameCharacter::BeginPlay()
 {
 	// Call the base class  
@@ -64,6 +73,13 @@ void AGenGameCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
+}
+
+void AGenGameCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AGenGameCharacter, CurrentState);
 }
 
 //////////////////////////////////////////////////////////////////////////

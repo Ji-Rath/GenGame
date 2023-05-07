@@ -7,6 +7,7 @@
 #include "InputActionValue.h"
 #include "GenGameCharacter.generated.h"
 
+enum class ECharacterState : uint8;
 
 UCLASS(config=Game)
 class AGenGameCharacter : public ACharacter
@@ -39,6 +40,9 @@ class AGenGameCharacter : public ACharacter
 
 public:
 	AGenGameCharacter();
+
+	UFUNCTION(BlueprintCallable)
+	void SetPlayerState(ECharacterState NewState);
 	
 
 protected:
@@ -56,6 +60,14 @@ protected:
 	
 	// To add mapping context
 	virtual void BeginPlay();
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, ReplicatedUsing=OnRepCurrentState)
+	ECharacterState CurrentState;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnRepCurrentState();
+
+	virtual void GetLifetimeReplicatedProps( TArray< FLifetimeProperty > & OutLifetimeProps ) const override;
 
 public:
 	/** Returns CameraBoom subobject **/
