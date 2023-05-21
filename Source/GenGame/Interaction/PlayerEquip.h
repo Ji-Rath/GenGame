@@ -28,4 +28,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	void EquipItem(const TSoftObjectPtr<UItemDefinition>& Item);
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void UseItem();
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void FinishUseItem();
 };

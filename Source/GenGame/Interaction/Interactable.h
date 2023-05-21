@@ -39,8 +39,8 @@ public:
 
 	// Returns whether the actor can be interacted with
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-	bool CanInteract(const AActor* Interactor);
+	bool CanInteract(const AActor* Interactor) const;
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-	EInteractType GetInteractType();
+	EInteractType GetInteractType() const;
 };
