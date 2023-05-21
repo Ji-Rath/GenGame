@@ -13,6 +13,8 @@ class AGenGameGameMode : public AGameModeBase
 
 public:
 	AGenGameGameMode();
+
+	virtual void Reset() override;
 };
 
 

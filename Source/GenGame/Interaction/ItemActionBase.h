@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable, BlueprintType)
 class GENGAME_API UItemActionBase : public UObject
 {
 	GENERATED_BODY()
@@ -22,4 +22,6 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void EndAction();
+	
+	UWorld* GetWorld() const;
 };
