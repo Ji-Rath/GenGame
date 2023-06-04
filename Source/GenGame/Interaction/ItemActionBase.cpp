@@ -5,7 +5,7 @@
 
 #include "PlayerEquip.h"
 
-void UItemActionBase::EndAction()
+void UItemActionBase::EndAction_Implementation()
 {
 	if (ActionPerformer->Implements<UPlayerEquip>())
 	{

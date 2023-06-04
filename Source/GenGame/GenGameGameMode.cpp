@@ -13,3 +13,9 @@ AGenGameGameMode::AGenGameGameMode()
 		DefaultPawnClass = PlayerPawnBPClass.Class;
 	}
 }
+
+void AGenGameGameMode::Reset()
+{
+	Super::Reset();
+	//@todo implement reset for gamemode functionality
+}

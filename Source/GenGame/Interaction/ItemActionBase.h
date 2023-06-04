@@ -20,7 +20,7 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	void PerformAction(AActor* OwnerActor);
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void EndAction();
 	
 	UWorld* GetWorld() const;
