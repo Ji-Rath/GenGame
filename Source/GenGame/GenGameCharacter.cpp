@@ -112,7 +112,7 @@ void AGenGameCharacter::Move(const FInputActionValue& Value)
 	if (Controller != nullptr)
 	{
 		// find out which way is forward
-		const FRotator Rotation = Controller->GetControlRotation();
+		const FRotator Rotation = Cast<APlayerController>(GetController())->PlayerCameraManager->GetCameraRotation();
 		const FRotator YawRotation(0, Rotation.Yaw, 0);
 
 		// get forward vector
