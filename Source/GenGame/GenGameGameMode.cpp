@@ -19,3 +19,24 @@ void AGenGameGameMode::Reset()
 	Super::Reset();
 	//@todo implement reset for gamemode functionality
 }
+
+void AGenGameGameMode::TickWave()
+{
+	AActor* SpawnPoint = GetRandomSpawnPoint();
+
+	const int GroupCount = FMath::RandRange(1,3);
+
+	FTimerDelegate SpawnDelegate = FTimerDelegate::CreateUObject(this, &AGenGameGameMode::SpawnEnemy, SpawnPoint);
+	for(int i=0;i<GroupCount;i++)
+	{
+		if (EnemiesToSpawn > 0)
+		{
+			FTimerHandle Handle;
+			GetWorldTimerManager().SetTimer(Handle, SpawnDelegate, EnemyGroupSpawnRate*i, false);
+		}
+		else
+		{
+			break;
+		}
+	}
+}

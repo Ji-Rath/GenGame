@@ -42,5 +42,8 @@ public:
 	bool CanInteract(const AActor* Interactor) const;
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	float GetInteractPercent();
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	EInteractType GetInteractType() const;
 };
