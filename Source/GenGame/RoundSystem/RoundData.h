@@ -9,7 +9,7 @@
 /**
  * 
  */
-USTRUCT()
+USTRUCT(BlueprintType)
 struct GENGAME_API FRoundData : public FTableRowBase
 {
 	GENERATED_BODY()

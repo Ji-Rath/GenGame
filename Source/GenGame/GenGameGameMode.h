@@ -12,9 +12,25 @@ class AGenGameGameMode : public AGameModeBase
 	GENERATED_BODY()
 
 public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int EnemiesToSpawn;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float EnemyGroupSpawnRate = 0.5f;
+
 	AGenGameGameMode();
 
 	virtual void Reset() override;
+
+	UFUNCTION(BlueprintCallable)
+	virtual void TickWave();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpawnEnemy(AActor* SpawnPoint);
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	AActor* GetRandomSpawnPoint();
 };
 
 
