@@ -6,6 +6,14 @@
 #include "Engine/DataTable.h"
 #include "RoundData.generated.h"
 
+UENUM(BlueprintType)
+enum ELevelState
+{
+	PreGame,
+	InProgress,
+	Ended
+};
+
 /**
  * 
  */
