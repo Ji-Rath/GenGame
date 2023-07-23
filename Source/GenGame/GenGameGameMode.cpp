@@ -1,7 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "GenGameGameMode.h"
-#include "GenGameCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 
 AGenGameGameMode::AGenGameGameMode()
