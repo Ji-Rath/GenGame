@@ -52,9 +52,9 @@ void AVacuum::EnterVacuumZone(UPrimitiveComponent* OverlappedComponent, AActor* 
 		{
 			if (AActor* StrongActor = WeakActor.Get())
 			{
-				StrongActor->Destroy();
 				if (AVacuum* StrongThis = WeakThis.Get())
 				{
+					StrongThis->OnSuckObject.Broadcast(StrongActor);
 					StrongThis->TimerHandles.Remove(WeakActor);
 				}
 			}

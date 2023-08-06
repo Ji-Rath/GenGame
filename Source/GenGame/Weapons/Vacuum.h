@@ -8,6 +8,8 @@
 
 class UBoxComponent;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSuckObject, AActor*, Actor);
+
 UCLASS()
 class GENGAME_API AVacuum : public AActor
 {
@@ -37,6 +39,9 @@ public:
 	// Rate at which to destroy enemies
 	UPROPERTY(EditAnywhere)
 	float VacuumRate = 1.f;
+
+	UPROPERTY(BlueprintAssignable, BlueprintCallable)
+	FSuckObject OnSuckObject;
 
 	TMap<TWeakObjectPtr<AActor>, FTimerHandle> TimerHandles;
 };

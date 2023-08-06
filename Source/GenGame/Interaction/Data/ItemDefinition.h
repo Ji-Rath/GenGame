@@ -6,7 +6,7 @@
 #include "Engine/DataAsset.h"
 #include "ItemDefinition.generated.h"
 
-class UItemActionBase;
+class UItemBase;
 /**
  * 
  */
@@ -22,5 +22,5 @@ public:
 	FText Name;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	TSoftClassPtr<UItemActionBase> Action;
+	TSoftClassPtr<UItemBase> Action;
 };

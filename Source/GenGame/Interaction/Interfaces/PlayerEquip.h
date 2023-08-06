@@ -27,7 +27,7 @@ public:
 	TSoftObjectPtr<UItemDefinition> GetEquippedItem();
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-	void EquipItem(const TSoftObjectPtr<UItemDefinition>& Item);
+	void EquipItem(const TSoftObjectPtr<UItemDefinition>& Item, UObject* ObjectData);
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	void UseItem();
