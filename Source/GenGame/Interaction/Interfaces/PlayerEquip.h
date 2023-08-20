@@ -24,7 +24,10 @@ class GENGAME_API IPlayerEquip
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-	TSoftObjectPtr<UItemDefinition> GetEquippedItem();
+	TSoftObjectPtr<UItemDefinition> GetEquippedItem() const;
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	UItemBase* GetItemObject() const;
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	void EquipItem(const TSoftObjectPtr<UItemDefinition>& Item, UObject* ObjectData);

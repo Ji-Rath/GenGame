@@ -7,6 +7,8 @@
 #include "GenGame/Weapons/Suckable.h"
 #include "Enemy.generated.h"
 
+enum class EEnemyState : uint8;
+
 UCLASS()
 class GENGAME_API AEnemy : public ACharacter, public ISuckable
 {
@@ -20,10 +22,27 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, ReplicatedUsing="OnRepEnemyState")
+	EEnemyState EnemyState;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnRepEnemyState();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EEnemyState DefaultState;
+
+	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly)
+	void SetStateFor(EEnemyState NewState, float Duration);
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, BlueprintAuthorityOnly)
+	void SetState(EEnemyState NewState);
 };

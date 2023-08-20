@@ -20,6 +20,9 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	void PerformAction(AActor* OwnerActor);
 
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void ReloadAction(AActor* OwnerActor);
+
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void EndAction();
 

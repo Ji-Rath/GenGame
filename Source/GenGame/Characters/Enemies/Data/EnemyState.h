@@ -8,5 +8,6 @@ UENUM(BlueprintType)
 enum class EEnemyState : uint8
 {
 	Normal,
-	Stunned
+	Stunned,
+	Frozen
 };

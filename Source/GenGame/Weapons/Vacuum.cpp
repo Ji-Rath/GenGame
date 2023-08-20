@@ -5,8 +5,6 @@
 
 #include "Suckable.h"
 #include "Components/BoxComponent.h"
-#include "Components/ShapeComponent.h"
-#include "GenGame/Characters/Enemy.h"
 
 
 // Sets default values

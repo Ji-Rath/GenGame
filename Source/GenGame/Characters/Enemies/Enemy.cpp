@@ -3,6 +3,8 @@
 
 #include "Enemy.h"
 
+#include "Net/UnrealNetwork.h"
+
 
 // Sets default values
 AEnemy::AEnemy()
@@ -18,6 +20,13 @@ void AEnemy::BeginPlay()
 	
 }
 
+void AEnemy::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	
+	DOREPLIFETIME(AEnemy, EnemyState);
+}
+
 // Called every frame
 void AEnemy::Tick(float DeltaTime)
 {
@@ -28,5 +37,15 @@ void AEnemy::Tick(float DeltaTime)
 void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+void AEnemy::SetStateFor(EEnemyState NewState, float Duration)
+{
+	SetState(NewState);
+	FTimerHandle Handle;
+	GetWorldTimerManager().SetTimer(Handle, FTimerDelegate::CreateLambda([this]()
+	{
+		SetState(DefaultState);
+	}), Duration, false);
 }
 

@@ -15,8 +15,11 @@ class GENGAME_API UItemDefinition : public UDataAsset
 {
 	GENERATED_BODY()
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Mesh")
 	TSoftObjectPtr<UStaticMesh> Mesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Mesh")
+	FTransform OffsetTransform;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FText Name;
