@@ -34,6 +34,14 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, ReplicatedUsing="OnRepEnemyState")
 	EEnemyState EnemyState;
 
+	// Points required in order to have the possibility of this enemy spawning
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int PointThreshold = 0;
+
+	// Points required to actually spawn this enemy
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int PointCost = 1;
+
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnRepEnemyState();
 

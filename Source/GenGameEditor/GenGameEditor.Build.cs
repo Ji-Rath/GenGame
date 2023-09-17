@@ -8,8 +8,8 @@ public class GenGameEditor : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "EnhancedInput", "GenGame", "GameplayDebugger" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "EnhancedInput", "GenGame" });
 		
-		SetupGameplayDebuggerSupport(base.Target);
+		SetupGameplayDebuggerSupport(Target, true);
 	}
 }

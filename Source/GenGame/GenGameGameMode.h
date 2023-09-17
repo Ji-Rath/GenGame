@@ -14,7 +14,7 @@ class AGenGameGameMode : public AGameModeBase
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int EnemiesToSpawn;
+	int RoundPoints;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float EnemyGroupSpawnRate = 0.5f;

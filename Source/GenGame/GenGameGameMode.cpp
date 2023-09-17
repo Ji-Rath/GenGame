@@ -28,7 +28,7 @@ void AGenGameGameMode::TickWave()
 	FTimerDelegate SpawnDelegate = FTimerDelegate::CreateUObject(this, &AGenGameGameMode::SpawnEnemy, SpawnPoint);
 	for(int i=0;i<GroupCount;i++)
 	{
-		if (EnemiesToSpawn > 0)
+		if (RoundPoints > 0)
 		{
 			FTimerHandle Handle;
 			GetWorldTimerManager().SetTimer(Handle, SpawnDelegate, EnemyGroupSpawnRate*i, false);

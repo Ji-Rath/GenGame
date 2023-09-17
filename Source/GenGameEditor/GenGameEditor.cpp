@@ -17,7 +17,7 @@ void FGenGameEditorModule::StartupModule()
 
 #if WITH_GAMEPLAY_DEBUGGER
 	IGameplayDebugger& GameplayDebuggerModule = IGameplayDebugger::Get();
-	GameplayDebuggerModule.RegisterCategory("Generic", IGameplayDebugger::FOnGetCategory::CreateStatic(&FGameplayDebuggerCategory_GenGame::MakeInstance), EGameplayDebuggerCategoryState::EnabledInGameAndSimulate, 1);
+	GameplayDebuggerModule.RegisterCategory("GenGame", IGameplayDebugger::FOnGetCategory::CreateStatic(&FGameplayDebuggerCategory_GenGame::MakeInstance), EGameplayDebuggerCategoryState::EnabledInGameAndSimulate);
 	GameplayDebuggerModule.NotifyCategoriesChanged();
 #endif
 }

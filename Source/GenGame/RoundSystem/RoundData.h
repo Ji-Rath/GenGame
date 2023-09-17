@@ -6,12 +6,26 @@
 #include "Engine/DataTable.h"
 #include "RoundData.generated.h"
 
+class AEnemy;
+
 UENUM(BlueprintType)
 enum ELevelState
 {
 	PreGame,
 	InProgress,
 	Ended
+};
+
+USTRUCT(BlueprintType)
+struct FWaveOverride
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSoftClassPtr<AEnemy> Class;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int MaxCount = -1;
 };
 
 /**
@@ -41,6 +55,16 @@ public:
 	// The amount of waves this level will have
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int Waves = 1;
+
+	// Enemies that will spawn in this level
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Enemy Info")
+	TArray<TSoftClassPtr<AEnemy>> EnemyPool;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Enemy Info")
+	float PointMultiplier = 1.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Wave Info")
+	TMap<int, FWaveOverride> WaveOverrideInfo;
 
 	// The level to load
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
