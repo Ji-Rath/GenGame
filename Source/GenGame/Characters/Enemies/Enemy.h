@@ -11,7 +11,7 @@
 enum class EEnemyState : uint8;
 
 UCLASS()
-class GENGAME_API AEnemy : public ACharacter, public ISuckable, public IAttacker
+class GENGAME_API AEnemy : public ACharacter, public IAttacker
 {
 	GENERATED_BODY()
 
