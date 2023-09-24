@@ -4,13 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "GenGame/Interfaces/Attacker.h"
 #include "GenGame/Weapons/Suckable.h"
 #include "Enemy.generated.h"
 
 enum class EEnemyState : uint8;
 
 UCLASS()
-class GENGAME_API AEnemy : public ACharacter, public ISuckable
+class GENGAME_API AEnemy : public ACharacter, public ISuckable, public IAttacker
 {
 	GENERATED_BODY()
 

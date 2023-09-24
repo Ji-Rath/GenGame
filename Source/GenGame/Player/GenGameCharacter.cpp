@@ -9,6 +9,8 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Engine/DamageEvents.h"
+#include "GenGame/Characters/Enemies/Slime/SlimeTrail.h"
 #include "Net/UnrealNetwork.h"
 
 
@@ -80,6 +82,31 @@ void AGenGameCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(AGenGameCharacter, CurrentState);
+}
+
+void AGenGameCharacter::ApplyPoison()
+{
+	if (!GetWorldTimerManager().TimerExists(PoisonHandle))
+	{
+		FTimerDelegate TimerDelegate;
+		TimerDelegate.BindUObject(this, &AGenGameCharacter::ApplyPoisonDamage);
+		GetWorldTimerManager().SetTimer(PoisonHandle, TimerDelegate, PoisonInterval, true);
+	}
+}
+
+void AGenGameCharacter::CheckPoison()
+{
+	TArray<AActor*> PoisonInRange;
+	GetOverlappingActors(PoisonInRange, ASlimeTrail::StaticClass());
+	if (PoisonInRange.IsEmpty())
+	{
+		GetWorldTimerManager().ClearTimer(PoisonHandle);
+	}
+}
+
+void AGenGameCharacter::ApplyPoisonDamage()
+{
+	TakeDamage(PoisonDamage, FDamageEvent(), GetController(), this);
 }
 
 //////////////////////////////////////////////////////////////////////////

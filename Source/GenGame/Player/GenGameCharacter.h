@@ -69,6 +69,24 @@ protected:
 
 	virtual void GetLifetimeReplicatedProps( TArray< FLifetimeProperty > & OutLifetimeProps ) const override;
 
+	UFUNCTION(BlueprintCallable)
+	void ApplyPoison();
+
+	UFUNCTION(BlueprintCallable)
+	void CheckPoison();
+
+	UFUNCTION()
+	void ApplyPoisonDamage();
+
+	UPROPERTY()
+	FTimerHandle PoisonHandle;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float PoisonDamage = 3.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float PoisonInterval = 0.5f;
+
 public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
